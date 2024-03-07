@@ -1,0 +1,16 @@
+const fs = require('fs');
+const data = 'Hola mundo!';
+fs.writeFile('archivo.txt', data, (err) => { 
+  if (err) throw err; 
+  console.log('Archivo escrito correctamente'); 
+});
+const fs = require('fs'); 
+fs.readFile('archivo.txt', 'utf8', (err, data) => {
+  if (err) throw err;
+  console.log(data); 
+});
+const fs = require('fs');
+fs.mkdir('holaNodejs', (err) => {
+  if (err) throw err; 
+  console.log('Directorio creado correctamente'); 
+});
