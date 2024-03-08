@@ -6,7 +6,7 @@ const readline = require('readline').createInterface({
     output: process.stdout
   });
 
-  readline.question('¿Que carpeta quieres crear para copiar alli archivo.txt? ', texto => {
+  readline.question('¿Que carpeta quieres crear para copiar allí archivo.txt? ', texto => {
     
     fs.mkdir(texto, (err) => {
         if (err) throw err; 
@@ -15,25 +15,25 @@ const readline = require('readline').createInterface({
     
     console.log(`Se creó esta carpeta: ${texto}.`);
     readline.close();
-  });
+  
 
 
 const path = require('path');
 
 const sourceFilePath = './archivo.txt';
-const destinationDirectory = './Copia';
+const destinationDirectory = `./${texto}`;
 
-// Check if the source file exists
+// revisar si el archivo existe
 fs.access(sourceFilePath, fs.constants.F_OK, (err) => {
     if (err) {
-        console.error(`Source file ${sourceFilePath} does not exist`);
+        console.error(`Archivo ${sourceFilePath} no existe`);
         return;
     }
 
-    // Check if the destination directory exists
+    // revisar si directorio existe
     fs.access(destinationDirectory, fs.constants.F_OK, (err) => {
         if (err) {
-            console.error(`Destination directory ${destinationDirectory} does not exist`);
+            console.error(`Directorio ${destinationDirectory} no existe`);
             return;
         }
 
@@ -46,12 +46,14 @@ fs.access(sourceFilePath, fs.constants.F_OK, (err) => {
         // Copy the file
         fs.copyFile(sourceFilePath, destinationFilePath, (err) => {
             if (err) {
-                console.error('Error copying file:', err);
+                console.error('Error al copiar archivo.txt:', err);
                 return;
             }
-            console.log(`File ${sourceFilePath} copied to ${destinationFilePath} successfully.`);
+            console.log(`Archivo ${sourceFilePath} copiado a ${destinationFilePath}.`);
         });
     });
+});
+
 });
 /*
 fs.mkdir('holaNodejs', (err) => {
